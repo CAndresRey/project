@@ -13,7 +13,7 @@ function transformAST(ast) {
   }
   
   if (!ast || typeof ast !== 'object') return ast;
-}
+
   // Transform based on node type
   switch (ast.type) {
     case 'create':
@@ -27,7 +27,7 @@ function transformAST(ast) {
     default:
       return _.mapValues(ast, value => transformAST(value));
   }
-
+}
 
 function convertToMSSQL(mysqlQuery) {
   try {
@@ -40,7 +40,7 @@ function convertToMSSQL(mysqlQuery) {
   }
 }
 
-function transformCreateTable(ast) {
+/* function transformCreateTable(ast) {
   const tableAst = _.cloneDeep(ast);
   
   // Transform column definitions
@@ -52,7 +52,7 @@ function transformCreateTable(ast) {
   });
 
   return tableAst;
-}
+} */
 
 function transformColumnType(colDef) {
   const typeMap = {
@@ -139,7 +139,7 @@ function transformSelect(ast) {
   return selectAst;
 }
 
-function transformInsert(ast) {
+/* function transformInsert(ast) {
   const insertAst = _.cloneDeep(ast);
   
   // Transform INSERT IGNORE to MERGE
@@ -172,7 +172,7 @@ function transformInsert(ast) {
   }
 
   return insertAst;
-}
+} */
 
 function transformFunction(ast) {
   const funcAst = _.cloneDeep(ast);
@@ -214,7 +214,7 @@ function transformFunction(ast) {
   return funcAst;
 }
 
-function transformJoin(ast) {
+/* function transformJoin(ast) {
   const joinAst = _.cloneDeep(ast);
   
   // Transform NATURAL JOIN to regular JOIN
@@ -226,7 +226,7 @@ function transformJoin(ast) {
   }
 
   return joinAst;
-}
+} */
 
 function regexBasedConversion(query) {
   // Keep existing regex-based conversion as fallback
